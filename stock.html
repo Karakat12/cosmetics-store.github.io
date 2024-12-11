@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог со скидками</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #8B0000;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+        }
+        nav {
+            background-color: #333; 
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #8B0000;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #fff;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #8B0000;
+            color: #fff;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        nav .dropdown a {
+            display: inline-block;
+        }nav {
+            background-color: #333; 
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #8B0000;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #fff;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #8B0000;
+            color: #fff;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        nav .dropdown a {
+            display: inline-block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(500px, 1fr));
+            gap: 20px;
+        }
+
+        /* Анимация fadeIn */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .product-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in-out forwards;
+            opacity: 0; 
+        }
+
+        .product-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        .product-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        .product-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        .product-card:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+        .product-card:nth-child(5) {
+            animation-delay: 1s;
+        }
+
+.product-card:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .product-card:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+                transform: translateY(-5px);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .add-to-cart {
+            background-color: #8B0000;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        .add-to-cart:hover {
+            background-color: #a52a2a;
+        }
+        .add-to-cart:active {
+            transform: scale(0.95);  
+            background-color: #8b0000;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+    
+    </style>
+</head>
+<body>
+
+<header>Каталог со скидками</header>
+
+<nav>
+    <a href="index.html">Главная</a>
+        <a href="products.html">Каталог</a>
+
+    <div class="dropdown">
+        <a href="discounts.html">Скидки</a>
+        <div class="dropdown-content">
+            <a href="#">BLACK FRIDAY cкидки от 50% до 60%</a>
+            <a href="stock.html">Акции месяца</a>
+        </div>
+    </div>
+
+    <a href="contacts.html">Контакты</a>
+</nav>
+<div class="container">
+    <h2>Акции</h2>
+    <div class="product-grid">
+
+        <div class="product-card">
+            <img src="vivienne sabo.jpeg" alt="Товар 1" width="600">
+        </div>
+
+        <div class="product-card">
+            <img src="бонусы.jpeg" alt="Товар 2" width="600">
+        </div>
+
+        <div class="product-card">
+            <img src="alba.jpeg" alt="Товар 2" width="600">
+        </div>
+
+        <div class="product-card">
+            <img src="shik.jpeg" alt="Товар 2" width="600">
+        </div>
+
+        <div class="product-card">
+            <img src="mac.jpeg" alt="Товар 2" width="600">
+        </div>
+
+        <div class="product-card">
+            <img src="bobbi.jpeg" alt="Товар 2" width="600">
+        </div>
+
+            <div class="product-card">
+                <img src="okolo.jpeg" alt="Товар 2" width="600">
+            </div>
+
+            <div class="product-card">
+            <img src="3ina.jpeg" alt="Товар 2" width="600">
+        </div>
+    </div>
+        
+</div>
+
+<footer>Все права защищены © 2024</footer>
+
+</body>
+</html>

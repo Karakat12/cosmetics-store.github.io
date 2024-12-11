@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог товаров</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f3f3;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #8B0000;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+        }
+        
+        nav {
+            background-color: #333; 
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #8B0000;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #fff;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #8B0000;
+            color: #fff;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        nav .dropdown a {
+            display: inline-block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+       
+        .product-card:nth-child(1) { animation-delay: 0.2s; }
+        .product-card:nth-child(2) { animation-delay: 0.4s; }
+        .product-card:nth-child(3) { animation-delay: 0.6s; }
+        .product-card:nth-child(4) { animation-delay: 0.8s; }
+        .product-card:nth-child(5) { animation-delay: 1s; }
+        .product-card:nth-child(6) { animation-delay: 0.2s; }
+        .product-card:nth-child(7) { animation-delay: 0.4s; }
+        .product-card:nth-child(8) { animation-delay: 0.6s; }
+        .product-card:nth-child(9) { animation-delay: 0.8s; }
+        .product-card:nth-child(10) { animation-delay: 1s; }
+        .product-card:nth-child(11) { animation-delay: 0.2s; }
+        .product-card:nth-child(12) { animation-delay: 0.4s; }
+        .product-card:nth-child(13) { animation-delay: 0.6s; }
+        .product-card:nth-child(14) { animation-delay: 0.8s; }
+        .product-card:nth-child(15) { animation-delay: 1s; }
+        .product-card:nth-child(16) { animation-delay: 0.2s; }
+        .product-card:nth-child(17) { animation-delay: 0.4s; }
+        .product-card:nth-child(18) { animation-delay: 0.6s; }
+        .product-card:nth-child(19) { animation-delay: 0.8s; }
+        .product-card:nth-child(20) { animation-delay: 1s; }
+        .product-card:nth-child(21) { animation-delay: 0.2s; }
+        .product-card:nth-child(22) { animation-delay: 0.4s; }
+        .product-card:nth-child(23) { animation-delay: 0.6s; }
+        .product-card:nth-child(24) { animation-delay: 0.8s; }
+        .product-card:nth-child(25) { animation-delay: 1s; }
+        .product-card:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .product-card:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .product-price {
+            color: #8B0000;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .add-to-cart {
+            background-color: #8B0000;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .add-to-cart:hover {
+            background-color: #a52a2a;
+        }
+        .add-to-cart:hover {
+            background-color: #a52a2a;
+        }
+        .add-to-cart:active {
+            transform: scale(0.95);  
+            background-color: #8b0000;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+
+       
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .filter-container {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .filter-container input {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .filter-container button {
+            padding: 10px 20px;
+            background-color: #8B0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .filter-container button:hover {
+            background-color: #a52a2a;
+        }
+    </style>
+</head>
+<body>
+
+<header>Каталог косметики</header>
+
+<nav>
+    <a href="index.html">Главная</a>
+
+    <div class="dropdown">
+        <a href="products.html">Каталог</a>
+        <div class="dropdown-content">
+            <a href="skin care.html">Уход за кожей</a>
+            <a href="makeup.html">Макияж</a>
+            <a href="perfumery.html">Парфюмерия</a>
+            <a href="hair.html">Волосы</a>
+        </div>
+    </div>
+    <a href="discounts.html">Скидки</a>
+
+    <a href="contacts.html">Контакты</a>
+</nav>
+
+<div class="container">
+    <h2>Каталог товаров</h2>
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000278848/web/696d674d61696e5f63373166663036623935643034633363386364303436643437316564363262618dcdbd7ad37d325fullhd.webp" alt="Тональный крем">
+            <div class="product-name"><a href="1.html">MILANI Perfect 2-in-1 Foundation + Concealer</a></div>
+            <div class="product-price">10 583 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000326873/web/696d674d61696e5f37363732633638346331373334333931623464383364333962333835643665328dccb8e5fdf7b1bfullhd.webp" alt="Губная помада">
+            <div class="product-name"><a href="2.html">CLINIQUE Longwear Lipstick</a></div>
+            <div class="product-price">17 500 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19760336498/web/696d67416464338dc83c8e7200508fullhd.webp" alt="Тушь для ресниц">
+            <div class="product-name"><a href="3.html">MAYBELLINE NEW YORK Lash Sensational Sky High</a></div>
+            <div class="product-price">5 292 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000183939/web/696d67416464338dc8401e7639da2fullhd.webp" alt="Крем для лица">
+            <div class="product-name"><a href="4.html">HEIMISH MARINE CARE DEEP MOISTURE NOURISHING MELTING CREAM</a></div>
+            <div class="product-price">16 910 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19760343869/web/696d674d61696e8dc83c97f207b5cfullhd.webp" alt="Сыворотка с гиалуроновой кислотой">
+            <div class="product-name"><a href="5.html">ORJENA ULTRA HYALURONIC SERUM</a></div>
+            <div class="product-price">7 856 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000039130/web/696d674d61696e8dc83d483fb022afullhd.webp" alt="Паста для волос">
+            <div class="product-name">ORGANICALS SHAPE MATTE PASTE BEESWAX</div>
+            <div class="product-price">10 362  ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000296336/web/696d674d61696e5f34623734363563343261393134316431393835303662653664646438363434318dce464f5271153fullhd.webp" alt="Увлажняющий солнцезащитный крем SPF 50+ PA++++">
+            <div class="product-name">MA:NYO Hyaluron Hydrating Sunscreen</div>
+            <div class="product-price">7 856 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000076473/web/696d674d61696e5f66363462363931363433356234646364626664306339303766376233353035308dcf1c397ae6b43fullhd.webp" alt="Сыворотка">
+            <div class="product-name">D'ALBA White Truffle First Spray Serum</div>
+            <div class="product-price">12000 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000200470/web/696d674d61696e8dc840f6e839c1cfullhd.webp" alt="Крем">
+            <div class="product-name">OKOLO Sanctuary night cream refill</div>
+            <div class="product-price">11750 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/41100900004/web/696d674d61696e5f63623531646262313766653234633433393636336339383666376534323766348dcb2e2356c91cbfullhd.webp" alt="Эссенция">
+            <div class="product-name">DUFT & DOFT SALMONVGENE HYDRO ACTIVE ESSENCE</div>
+            <div class="product-price">11000 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000250759/web/696d67416464318dc8414a7caa3cafullhd.webp" alt="Маска для лица">
+            <div class="product-name">DARLING* Doctor new</div>
+            <div class="product-price">9 100 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000262427/web/696d674d61696e8dc841070923aa3fullhd.webp" alt="Румяна в стике">
+            <div class="product-name">RAD Hush Hush Dewy Blush</div>
+            <div class="product-price">4 450 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div> 
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000248444/web/696d674d61696e5f31613239666164343233376334356364616631616338323333336261363265638dcd71cd99b5ba0fullhd.webp" alt="Палетка теней">
+            <div class="product-name">DARLING* Birthday Suit</div>
+            <div class="product-price">9 900 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000329307/web/696d674d61696e5f37333036633364613733646234353262626463326136623935323266333034348dcd89c4b0c51e8fullhd.webp" alt=" Гель-блеск для губ">
+            <div class="product-name">INFLUENCE BEAUTY Gloss-X</div>
+            <div class="product-price">2 398 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/83800200004/web/696d674d61696e5f33336638376564633137653434663630393031363663343762396364363566628dc9a8eede6fd68fullhd.webp" alt="Парфюм">
+            <div class="product-name">ESSENTIAL PARFUMS PARIS ROSE MAGNETIC</div>
+            <div class="product-price">54 065 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000214332/web/696d674d61696e8dc8409d7bd207efullhd.webp" alt="Парфюм">
+            <div class="product-name">COACH Green</div>
+            <div class="product-price">41 813 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000253143/web/696d674d61696e5f33636663373436346639646434363864383061396137613661313736356466358dcf8d661255abafullhd.webp" alt="Парфюм">
+            <div class="product-name">BANANA REPUBLIC Wildbloom Rouge</div>
+            <div class="product-price">34 900 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000258595/web/696d674d61696e8dc840f464d5ceffullhd.webp" alt="Парфюм">
+            <div class="product-name">NINA RICCI NINA ILLUSION</div>
+            <div class="product-price">59 683 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/7181300003/web/696d674d61696e8dc83ae0f00add3fullhd.webp" alt="Парфюм">
+            <div class="product-name">CAROLINA HERRERA CH </div>
+            <div class="product-price">51 713 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000198816/web/696d674d61696e8dc8405d5a1d624fullhd.webp" alt="Гидрофильный масло">
+            <div class="product-name">MA:NYO Pure Cleansing Oil </div>
+            <div class="product-price">11 970 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+
+
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000141209/web/696d674d61696e8dc83fc7e7cb515fullhd.webp" alt="Для волос">
+            <div class="product-name">OKOLO Rebounce Curl Wash </div>
+            <div class="product-price">13 500 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000269141/web/696d674d61696e8dc841293bfd6b1fullhd.webp" alt="Для волос">
+            <div class="product-name">OKOLO Repairworks Leave-in Booster </div>
+            <div class="product-price">12 000 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000087874/web/696d674d61696e8dc83e6912bd6f4fullhd.webp" alt="Для волос">
+            <div class="product-name">ORGANIC COLLECTION Защита цвета и блеск </div>
+            <div class="product-price">2 703 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000047324/web/696d674d61696e8dc83d6f56b144ffullhd.webp" alt="Для волос">
+            <div class="product-name">COTRIL Nutro Miracle Intensive Shampoо </div>
+            <div class="product-price">13 526 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000101840/web/696d674d61696e5f33373039303437353866646334353164383165313835346633323734316635658dc895ef7b0197cfullhd.webp" alt="Для губ">
+            <div class="product-name">LUXVISAGE Aqua gel hyaluron complex</div>
+            <div class="product-price">2560 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+    </div>
+</div>
+
+<footer>Все права защищены © 2024</footer>
+
+</body>
+</html>

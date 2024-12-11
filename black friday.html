@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог со скидками</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #8B0000;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+        }
+        nav {
+            background-color: #333; 
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #8B0000;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #fff;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #8B0000;
+            color: #fff;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        nav .dropdown a {
+            display: inline-block;
+        }nav {
+            background-color: #333; 
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #8B0000;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #fff;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #8B0000;
+            color: #fff;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        nav .dropdown a {
+            display: inline-block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 20px;
+        }
+
+        /* Анимация fadeIn */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .product-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in-out forwards;
+            opacity: 0; 
+        }
+
+        .product-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        .product-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        .product-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        .product-card:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+        .product-card:nth-child(5) {
+            animation-delay: 1s;
+        }
+
+.product-card:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .product-card:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+                transform: translateY(-5px);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .product-price {
+            color: #8B0000;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .product-old-price {
+            text-decoration: line-through;
+            color: #888;
+        }
+        .discount-percent {
+            font-size: 14px;
+            color: #228B22;
+            font-weight: bold;
+        }
+        .add-to-cart {
+            background-color: #8B0000;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        .add-to-cart:hover {
+            background-color: #a52a2a;
+        }
+        .add-to-cart:active {
+            transform: scale(0.95);  
+            background-color: #8b0000;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+    
+    </style>
+</head>
+<body>
+
+<header>Каталог со скидками</header>
+
+<nav>
+    <a href="index.html">Главная</a>
+        <a href="products.html">Каталог</a>
+
+    <div class="dropdown">
+        <a href="discounts.html">Скидки</a>
+        <div class="dropdown-content">
+            <a href="black friday.html">BLACK FRIDAY cкидки от 50% до 60%</a>
+            <a href="stock.html">Акции месяца</a>
+        </div>
+    </div>
+
+    <a href="contacts.html">Контакты</a>
+</nav>
+<div class="container">
+    <h2>BLACK FRIDAY</h2>
+    <div class="product-grid">
+
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000214574/web/696d674d61696e8dc8406ef8921c5fullhd.webp" alt="Товар 1" width="500">
+            <div class="product-name">FUNKY MONKEY Glitter eyeliner</div>
+            <div class="product-price">2 400₸ <span class="product-old-price">5872₸</span></div>
+            <div class="discount-percent">Скидка: 59%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000178455/web/696d674d61696e8dc840acf211d2efullhd.webp" alt="Товар 2" width="500">
+            <div class="product-name">BANANA REPUBLIC Linen Vetiver</div>
+            <div class="product-price">30 441₸ <span class="product-old-price">60883₸</span></div>
+            <div class="discount-percent">Скидка: 50%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000051073/web/696d674d61696e8dc83a9e3b2e5d0fullhd.webp" alt="Товар 3" width="500">
+            <div class="product-name">AJMAL NEUTRON</div>
+            <div class="product-price">18 975₸ <span class="product-old-price">37950₸</span></div>
+            <div class="discount-percent">Скидка: 50%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000120313/web/696d674d61696e5f61313564323464613461326234653539623736333637373762306336343735668dcd70fb6dfef48fullhd.webp" alt="Товар 4" width="500">
+            <div class="product-name">AJMAL AURUM WINTER</div>
+            <div class="product-price">31 625₸ <span class="product-old-price">63250₸</span></div>
+            <div class="discount-percent">Скидка: 50%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000224067/web/696d67416464318dc840be7bc1e86fullhd.webp" alt="Товар 5" width="500">
+            <div class="product-name">
+                FRANCOISE&FRAGRANCE. Egf 10ppm</div>
+            <div class="product-price">5 525₸ <span class="product-old-price">11050₸</span></div>
+            <div class="discount-percent">Скидка: 50%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000038061/web/696d674d61696e5f33343138623438313638376434616137383134313433363835303939333166618dc89f31d8f9de6fullhd.webp" alt="Товар 5" width="500">
+            <div class="product-name">
+                7DAYS B.COLOUR</div>
+            <div class="product-price">2 654₸ <span class="product-old-price">5309₸</span></div>
+            <div class="discount-percent">Скидка: 50%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000214541/web/696d674d61696e8dc8406e89d1852fullhd.webp" alt="Товар 5" width="500">
+            <div class="product-name"> 
+                FUNKY MONKEY Brow Marker</div>
+            <div class="product-price">2 751 ₸ <span class="product-old-price">6710₸</span></div>
+            <div class="discount-percent">Скидка: 59%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000051093/web/696d674d61696e8dc83a9d538ab72fullhd.webp" alt="Товар 5" width="500">
+            <div class="product-name">
+                AJMAL VIVA VIOLA</div>
+            <div class="product-price">17 462₸ <span class="product-old-price">34925₸</span></div>
+            <div class="discount-percent">Скидка: 50%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+
+            <div class="product-card">
+                <img src="https://pcdn.goldapple.ru/p/p/99680100017/web/696d674d61696e8dc83b15cfff96dfullhd.webp" alt="Товар 5" width="500">
+                <div class="product-name">
+                    ELIZAVECCA Witch Piggy Hell-Pore Control Hyaluronic Acid 97%</div>
+                <div class="product-price">3 054 ₸ <class="product-old-price">7636₸</span></div>
+                <div class="discount-percent">Скидка: 60%</div>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+
+    </div>
+</div>
+
+<footer>Все права защищены © 2024</footer>
+
+</body>
+</html>

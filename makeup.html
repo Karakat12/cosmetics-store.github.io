@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Макияж</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f3f3;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #8B0000;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+        }
+        
+        nav {
+            background-color: #333; 
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #8B0000;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #fff;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #8B0000;
+            color: #fff;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        nav .dropdown a {
+            display: inline-block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+       
+        .product-card:nth-child(1) { animation-delay: 0.2s; }
+        .product-card:nth-child(2) { animation-delay: 0.4s; }
+        .product-card:nth-child(3) { animation-delay: 0.6s; }
+        .product-card:nth-child(4) { animation-delay: 0.8s; }
+        .product-card:nth-child(5) { animation-delay: 1s; }
+        .product-card:nth-child(6) { animation-delay: 0.2s; }
+        .product-card:nth-child(7) { animation-delay: 0.4s; }
+        .product-card:nth-child(8) { animation-delay: 0.6s; }
+        .product-card:nth-child(9) { animation-delay: 0.8s; }
+        .product-card:nth-child(10) { animation-delay: 1s; }
+        
+        .product-card:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .product-card:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .product-price {
+            color: #8B0000;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .add-to-cart {
+            background-color: #8B0000;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .add-to-cart:hover {
+            background-color: #a52a2a;
+        }
+        .add-to-cart:hover {
+            background-color: #a52a2a;
+        }
+        .add-to-cart:active {
+            transform: scale(0.95);  
+            background-color: #8b0000;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+
+       
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .filter-container {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .filter-container input {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .filter-container button {
+            padding: 10px 20px;
+            background-color: #8B0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .filter-container button:hover {
+            background-color: #a52a2a;
+        }
+    </style>
+</head>
+<body>
+
+<header>Макияж</header>
+
+<nav>
+    <a href="index.html">Главная</a>
+
+    <div class="dropdown">
+        <a href="products.html">Каталог</a>
+        <div class="dropdown-content">
+            <a href="skin care.html">Уход за кожей</a>
+            <a href="makeup.html">Макияж</a>
+            <a href="perfumery.html">Парфюмерия</a>
+            <a href="hair.html">Волосы</a>
+        </div>
+    </div>
+
+        <a href="discounts.html">Скидки</a>
+    <a href="contacts.html">Контакты</a>
+</nav>
+
+<div class="container">
+    <h2>Макияж</h2>
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000262427/web/696d674d61696e8dc841070923aa3fullhd.webp" alt="Румяна в стике">
+            <div class="product-name">RAD Hush Hush Dewy Blush</div>
+            <div class="product-price">4 450 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div> 
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000248444/web/696d674d61696e5f31613239666164343233376334356364616631616338323333336261363265638dcd71cd99b5ba0fullhd.webp" alt="Палетка теней">
+            <div class="product-name">DARLING* Birthday Suit</div>
+            <div class="product-price">9 900 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000329307/web/696d674d61696e5f37333036633364613733646234353262626463326136623935323266333034348dcd89c4b0c51e8fullhd.webp" alt=" Гель-блеск для губ">
+            <div class="product-name">INFLUENCE BEAUTY Gloss-X</div>
+            <div class="product-price">2 398 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000278848/web/696d674d61696e5f63373166663036623935643034633363386364303436643437316564363262618dcdbd7ad37d325fullhd.webp" alt="Тональный крем">
+            <div class="product-name">MILANI Perfect 2-in-1 Foundation + Concealer</div>
+            <div class="product-price">10 583 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000062318/web/696d674d61696e8dc83ddb3323efbfullhd.webp" alt="Товар 1" width="500">
+            <div class="product-name">PUSY brow fix gel</div>
+            <div class="product-price">3000₸ <span class="product-old-price"></span></div>
+            <div class="discount-percent">Скидка: 24%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000246624/web/696d674d61696e5f61653535346665313236383934616532396566396431613966313333303237628dc90363bad73e9fullhd.webp" alt="Товар 2" width="500">
+            <div class="product-name">Sisley Phyto-Teint Perfection</div>
+            <div class="product-price">43700₸ <span class="product-old-price"></span></div>
+            <div class="discount-percent">Скидка: 30%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000021646/web/696d674d61696e8dc83cf3e2dc838fullhd.webp" alt="Товар 3" width="500">
+            <div class="product-name">3INA The Eye Gloss</div>
+            <div class="product-price">6480₸ <span class="product-old-price"></span></div>
+            <div class="discount-percent">Скидка: 20%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000058260/web/696d67416464318dc83dc3663133cfullhd.webp" alt="Товар 4" width="500">
+            <div class="product-name">SHIK intense</div>
+            <div class="product-price">4500₸ <span class="product-old-price"></span></div>
+            <div class="discount-percent">Скидка: 13%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/14243400025/web/696d67416464335f36396239386461626665366134396437383637323061376535383339316637368dcc5216f8f5d24fullhd.webp" alt="Товар 5" width="500">
+            <div class="product-name">MAC STUDIO FIX POWDER PLUS FOUNDATION</div>
+            <div class="product-price">18700₸ <span class="product-old-price"></span></div>
+            <div class="discount-percent">Скидка: 25%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000101840/web/696d674d61696e5f33373039303437353866646334353164383165313835346633323734316635658dc895ef7b0197cfullhd.webp" alt="Для губ">
+            <div class="product-name">LUXVISAGE Aqua gel hyaluron complex</div>
+            <div class="product-price">2560 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div> 
+
+    </div>
+
+</div>
+
+<footer>Все права защищены © 2024</footer>
+
+</body>
+</html>

@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Волосы</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #f3f3f3;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #8B0000;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+        }
+        
+        nav {
+            background-color: #333; 
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #8B0000;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #fff;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #8B0000;
+            color: #fff;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        nav .dropdown a {
+            display: inline-block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+        .product-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            opacity: 0;
+            transform: scale(0.8);
+            animation: fadeIn 0.8s ease-out forwards;
+        }
+       
+        .product-card:nth-child(1) { animation-delay: 0.2s; }
+        .product-card:nth-child(2) { animation-delay: 0.4s; }
+        .product-card:nth-child(3) { animation-delay: 0.6s; }
+        .product-card:nth-child(4) { animation-delay: 0.8s; }
+        .product-card:nth-child(5) { animation-delay: 1s; }
+        .product-card:nth-child(6) { animation-delay: 0.2s; }
+        .product-card:nth-child(7) { animation-delay: 0.4s; }
+        .product-card:nth-child(8) { animation-delay: 0.6s; }
+        .product-card:nth-child(9) { animation-delay: 0.8s; }
+        .product-card:nth-child(10) { animation-delay: 1s; }
+        
+        .product-card:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .product-card:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+            transform: translateY(-5px);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .product-price {
+            color: #8B0000;
+            font-size: 16px;
+            margin-bottom: 10px;
+        }
+        .add-to-cart {
+            background-color: #8B0000;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .add-to-cart:hover {
+            background-color: #a52a2a;
+        }
+        .add-to-cart:hover {
+            background-color: #a52a2a;
+        }
+        .add-to-cart:active {
+            transform: scale(0.95);  
+            background-color: #8b0000;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+
+       
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        .filter-container {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .filter-container input {
+            padding: 10px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 14px;
+        }
+
+        .filter-container button {
+            padding: 10px 20px;
+            background-color: #8B0000;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .filter-container button:hover {
+            background-color: #a52a2a;
+        }
+    </style>
+</head>
+<body>
+
+<header>Волосы</header>
+
+<nav>
+    <a href="index.html">Главная</a>
+
+    <div class="dropdown">
+        <a href="products.html">Каталог</a>
+        <div class="dropdown-content">
+            <a href="skin care.html">Уход за кожей</a>
+            <a href="makeup.html">Макияж</a>
+            <a href="perfumery.html">Парфюмерия</a>
+            <a href="hair.html">Волосы</a>
+        </div>
+    </div>
+        <a href="discounts.html">Скидки</a>
+       
+    <a href="contacts.html">Контакты</a>
+</nav>
+
+<div class="container">
+    <h2>Волосы</h2>
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000039130/web/696d674d61696e8dc83d483fb022afullhd.webp" alt="Паста для волос">
+            <div class="product-name">ORGANICALS SHAPE MATTE PASTE BEESWAX</div>
+            <div class="product-price">10 362  ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000141209/web/696d674d61696e8dc83fc7e7cb515fullhd.webp" alt="Для волос">
+            <div class="product-name">OKOLO Rebounce Curl Wash </div>
+            <div class="product-price">13 500 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000269141/web/696d674d61696e8dc841293bfd6b1fullhd.webp" alt="Для волос">
+            <div class="product-name">OKOLO Repairworks Leave-in Booster </div>
+            <div class="product-price">12 000 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000087874/web/696d674d61696e8dc83e6912bd6f4fullhd.webp" alt="Для волос">
+            <div class="product-name">ORGANIC COLLECTION Защита цвета и блеск </div>
+            <div class="product-price">2 703 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000047324/web/696d674d61696e8dc83d6f56b144ffullhd.webp" alt="Для волос">
+            <div class="product-name">COTRIL Nutro Miracle Intensive Shampoо </div>
+            <div class="product-price">13 526 ₸</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000176125/web/696d674d61696e8dc840c54aba787fullhd.webp" alt="Товар 5" width="500">
+            <div class="product-name">FOR ME BY GOLD APPLE Hair balm pump up</div>
+            <div class="product-price">2 726₸ <span class="product-old-price"></span></div>
+            <div class="discount-percent">Скидка: 31%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19760300021/web/696d674d61696e5f62373264323736336537613934326166386262333731363664333133383536318dcab001f6d3deefullhd.webp" alt="Товар 5" width="500">
+            <div class="product-name"> LADOR Scalp Scaling Spa</div>
+            <div class="product-price">692 ₸ <span class="product-old-price"></span></div>
+            <div class="discount-percent">Скидка: 27%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+            <div class="product-card">
+                <img src="https://pcdn.goldapple.ru/p/p/19760200009/web/696d674d61696e8dc83bcadcd5751fullhd.webp" alt="Товар 5" width="500">
+                <div class="product-name">LADOR Moisture Balancing Shampoo</div>
+                <div class="product-price">3 317₸ <span class="product-old-price"></span></div>
+                <div class="discount-percent">Скидка: 38%</div>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://pcdn.goldapple.ru/p/p/15180100011/web/696d674d61696e5f32613839383931646439633534336365383638306366336265616162323331668dc85fee1ab39a2fullhd.webp" alt="Товар 5" width="500">
+                <div class="product-name">WELEDA Revitaliziran tonik</div>
+                <div class="product-price">5 402₸ <span class="product-old-price"></span></div>
+                <div class="discount-percent">Скидка: 27%</div>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product-card">
+                <img src="https://pcdn.goldapple.ru/p/p/29172400001/web/696d674d61696e5f66373535353362653332313134323364386631323533633037323962303437338dc895e1f2c08a5fullhd.webp" alt="Товар 5" width="500">
+                <div class="product-name">OLLIN PROFESSIONAL PERFECT HAIR</div>
+                <div class="product-price">2 380₸ <span class="product-old-price"></span></div>
+                <div class="discount-percent">Скидка: 20%</div>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+
+    </div>
+</div>
+
+<footer>Все права защищены © 2024</footer>
+
+</body>
+</html>

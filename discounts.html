@@ -1,0 +1,436 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Каталог со скидками</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f3f3f3;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #8B0000;
+            color: #fff;
+            padding: 15px;
+            text-align: center;
+            font-size: 24px;
+        }
+        nav {
+            background-color: #333; 
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #8B0000;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #fff;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #8B0000;
+            color: #fff;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        nav .dropdown a {
+            display: inline-block;
+        }nav {
+            background-color: #333; 
+            display: flex;
+            justify-content: center;
+            padding: 10px 0;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        nav a {
+            color: white;
+            padding: 12px 20px;
+            text-decoration: none;
+            font-size: 16px;
+            font-weight: 500;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        nav a:hover {
+            background-color: #8B0000;
+            color: #fff;
+            border-radius: 5px;
+        }
+
+        
+        .dropdown {
+            position: relative;
+        }
+
+        .dropdown-content {
+            display: none; 
+            position: absolute;
+            background-color: #fff;
+            min-width: 200px;
+            box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .dropdown-content a {
+            color: #333;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            font-size: 14px;
+            font-weight: 400;
+            transition: background-color 0.3s ease, color 0.3s ease;
+        }
+
+        .dropdown-content a:hover {
+            background-color: #8B0000;
+            color: #fff;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        nav .dropdown a {
+            display: inline-block;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        /* Анимация fadeIn */
+        @keyframes fadeIn {
+            0% {
+                opacity: 0;
+                transform: scale(0.8);
+            }
+            100% {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .product-card {
+            background: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 15px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            animation: fadeIn 0.5s ease-in-out forwards;
+            opacity: 0; 
+        }
+
+        .product-card:nth-child(1) {
+            animation-delay: 0.2s;
+        }
+        .product-card:nth-child(2) {
+            animation-delay: 0.4s;
+        }
+        .product-card:nth-child(3) {
+            animation-delay: 0.6s;
+        }
+        .product-card:nth-child(4) {
+            animation-delay: 0.8s;
+        }
+        .product-card:nth-child(5) {
+            animation-delay: 1s;
+        }
+
+.product-card:hover {
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+        }
+        .product-card:hover {
+            box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+                transform: translateY(-5px);
+        }
+        .product-card img {
+            max-width: 100%;
+            height: auto;
+            border-radius: 5px;
+            margin-bottom: 10px;
+        }
+        .product-name {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .product-price {
+            color: #8B0000;
+            font-size: 16px;
+            margin-bottom: 5px;
+        }
+        .product-old-price {
+            text-decoration: line-through;
+            color: #888;
+        }
+        .discount-percent {
+            font-size: 14px;
+            color: #228B22;
+            font-weight: bold;
+        }
+        .add-to-cart {
+            background-color: #8B0000;
+            color: #fff;
+            padding: 10px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: transform 0.2s, background-color 0.3s;
+        }
+        .add-to-cart:hover {
+            background-color: #a52a2a;
+        }
+        .add-to-cart:active {
+            transform: scale(0.95);  
+            background-color: #8b0000;
+        }
+        footer {
+            background: #333;
+            color: #fff;
+            text-align: center;
+            padding: 15px 0;
+            margin-top: 20px;
+        }
+    
+    </style>
+</head>
+<body>
+
+<header>Каталог со скидками</header>
+
+<nav>
+    <a href="index.html">Главная</a>
+        <a href="products.html">Каталог</a>
+
+    <div class="dropdown">
+        <a href="discounts.html">Скидки</a>
+        <div class="dropdown-content">
+            <a href="black friday.html">BLACK FRIDAY cкидки от 50% до 60%</a>
+            <a href="stock.html">Акции месяца</a>
+        </div>
+    </div>
+
+    <a href="contacts.html">Контакты</a>
+</nav>
+<div class="container">
+    <h2>Товары со скидками</h2>
+    <div class="product-grid">
+
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000062318/web/696d674d61696e8dc83ddb3323efbfullhd.webp" alt="Товар 1" width="500">
+            <div class="product-name">PUSY brow fix gel</div>
+            <div class="product-price">3000₸ <span class="product-old-price">3950₸</span></div>
+            <div class="discount-percent">Скидка: 24%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000246624/web/696d674d61696e5f61653535346665313236383934616532396566396431613966313333303237628dc90363bad73e9fullhd.webp" alt="Товар 2" width="500">
+            <div class="product-name">Sisley Phyto-Teint Perfection</div>
+            <div class="product-price">43700₸ <span class="product-old-price">62400₸</span></div>
+            <div class="discount-percent">Скидка: 30%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000021646/web/696d674d61696e8dc83cf3e2dc838fullhd.webp" alt="Товар 3" width="500">
+            <div class="product-name">3INA The Eye Gloss</div>
+            <div class="product-price">6480₸ <span class="product-old-price">8100₸</span></div>
+            <div class="discount-percent">Скидка: 20%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000058260/web/696d67416464318dc83dc3663133cfullhd.webp" alt="Товар 4" width="500">
+            <div class="product-name">SHIK intense</div>
+            <div class="product-price">4500₸ <span class="product-old-price">5100₸</span></div>
+            <div class="discount-percent">Скидка: 13%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/14243400025/web/696d67416464335f36396239386461626665366134396437383637323061376535383339316637368dcc5216f8f5d24fullhd.webp" alt="Товар 5" width="500">
+            <div class="product-name">MAC STUDIO FIX POWDER PLUS FOUNDATION</div>
+            <div class="product-price">18700₸ <span class="product-old-price">25000₸</span></div>
+            <div class="discount-percent">Скидка: 25%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000149594/web/696d674d61696e8dc83f56f8f9232fullhd.webp" alt="Товар 5" width="500">
+            <div class="product-name">L'OREAL PARIS Revitalift Vitamin C</div>
+            <div class="product-price">6 017₸ <span class="product-old-price">7522₸</span></div>
+            <div class="discount-percent">Скидка: 20%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000187269/web/696d674d61696e8dc8409439f0da1fullhd.webp" alt="Товар 5" width="500">
+            <div class="product-name"> PYUNKANG YUL Best Seller Set</div>
+            <div class="product-price">17 551₸ <span class="product-old-price">20649₸</span></div>
+            <div class="discount-percent">Скидка: 15%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+        <div class="product-card">
+            <img src="https://pcdn.goldapple.ru/p/p/19000202500/web/696d674d61696e8dc840c655c6cebfullhd.webp" alt="Товар 5" width="500">
+            <div class="product-name">RAD Not going anywhere today whipped body cream</div>
+            <div class="product-price">3 680₸ <span class="product-old-price">4600₸</span></div>
+            <div class="discount-percent">Скидка: 20%</div>
+            <button class="add-to-cart">Добавить в корзину</button>
+        </div>
+
+            <div class="product-card">
+                <img src="https://pcdn.goldapple.ru/p/p/19000327595/web/696d674d61696e5f33626132656364633939373434633437393734643462363633343265313462638dce9ccb1aca0c5fullhd.webp" alt="Товар 5" width="500">
+                <div class="product-name">YVES SAINT LAURENT Libre Flowers & Flames</div>
+                <div class="product-price">43 706₸ <span class="product-old-price">67240₸</span></div>
+                <div class="discount-percent">Скидка: 35%</div>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://pcdn.goldapple.ru/p/p/19000214328/web/696d674d61696e8dc8409d638ec20fullhd.webp" alt="Товар 5" width="500">
+                <div class="product-name">COACH Wild rose</div>
+                <div class="product-price">34 759₸ <span class="product-old-price">50376₸</span></div>
+                <div class="discount-percent">Скидка: 31%</div>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://pcdn.goldapple.ru/p/p/19000220503/web/696d674d61696e8dc840d6bede4edfullhd.webp" alt="Товар 5" width="500">
+                <div class="product-name">MIND GAMES SISSA</div>
+                <div class="product-price">105 393₸ <span class="product-old-price">140525₸</span></div>
+                <div class="discount-percent">Скидка: 25%</div>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://pcdn.goldapple.ru/p/p/19000188097/web/696d674d61696e8dc84060c54187bfullhd.webp" alt="Товар 5" width="500">
+                <div class="product-name">BASTILLE Paradis nuit</div>
+                <div class="product-price">32 700₸ <span class="product-old-price">43600₸</span></div>
+                <div class="discount-percent">Скидка: 25%</div>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            
+            <div class="product-card">
+                <img src="https://pcdn.goldapple.ru/p/p/19000210752/web/696d674d61696e5f66646334366262633065363334616636383162653538613039613939653964338dcd0d9aacdfb94fullhd.webp" alt="Товар 5" width="500">
+                <div class="product-name">KARL LAGERFELD Eau de parfum</div>
+                <div class="product-price">35 137₸ <span class="product-old-price">46850₸</span></div>
+                <div class="discount-percent">Скидка: 25%</div>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product-card">
+                <img src="https://pcdn.goldapple.ru/p/p/19760322722/web/696d674d61696e8dc83c7452c94d3fullhd.webp" alt="Товар 5" width="500">
+                <div class="product-name">LANCÔME IDÔLE</div>
+                <div class="product-price">43 406₸ <span class="product-old-price">78920₸</span></div>
+                <div class="discount-percent">Скидка: 45%</div>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product-card">
+                <img src="https://pcdn.goldapple.ru/p/p/19000214321/web/696d674d61696e5f63613534336166393936306334323562613435376530323337313366346539618dcd0d95371d8e3fullhd.webp" alt="Товар 5" width="500">
+                <div class="product-name">COACH Floral blush</div>
+                <div class="product-price">27 112₸ <span class="product-old-price">39294₸</span></div>
+                <div class="discount-percent">Скидка: 31%</div>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+
+            <div class="product-card">
+                <img src="https://pcdn.goldapple.ru/p/p/19000176125/web/696d674d61696e8dc840c54aba787fullhd.webp" alt="Товар 5" width="500">
+                <div class="product-name">FOR ME BY GOLD APPLE Hair balm pump up</div>
+                <div class="product-price">2 726₸ <span class="product-old-price">3895₸</span></div>
+                <div class="discount-percent">Скидка: 31%</div>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+            <div class="product-card">
+                <img src="https://pcdn.goldapple.ru/p/p/19760300021/web/696d674d61696e5f62373264323736336537613934326166386262333731363664333133383536318dcab001f6d3deefullhd.webp" alt="Товар 5" width="500">
+                <div class="product-name"> LADOR Scalp Scaling Spa</div>
+                <div class="product-price">692 ₸ <span class="product-old-price">948₸</span></div>
+                <div class="discount-percent">Скидка: 27%</div>
+                <button class="add-to-cart">Добавить в корзину</button>
+            </div>
+                <div class="product-card">
+                    <img src="https://pcdn.goldapple.ru/p/p/19760200009/web/696d674d61696e8dc83bcadcd5751fullhd.webp" alt="Товар 5" width="500">
+                    <div class="product-name">LADOR Moisture Balancing Shampoo</div>
+                    <div class="product-price">3 317₸ <span class="product-old-price">5350₸</span></div>
+                    <div class="discount-percent">Скидка: 38%</div>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </div>
+
+                <div class="product-card">
+                    <img src="https://pcdn.goldapple.ru/p/p/15180100011/web/696d674d61696e5f32613839383931646439633534336365383638306366336265616162323331668dc85fee1ab39a2fullhd.webp" alt="Товар 5" width="500">
+                    <div class="product-name">WELEDA Revitaliziran tonik</div>
+                    <div class="product-price">5 402₸ <span class="product-old-price">7400₸</span></div>
+                    <div class="discount-percent">Скидка: 27%</div>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </div>
+                <div class="product-card">
+                    <img src="https://pcdn.goldapple.ru/p/p/29172400001/web/696d674d61696e5f66373535353362653332313134323364386631323533633037323962303437338dc895e1f2c08a5fullhd.webp" alt="Товар 5" width="500">
+                    <div class="product-name">OLLIN PROFESSIONAL PERFECT HAIR</div>
+                    <div class="product-price">2 380₸ <span class="product-old-price">2975₸</span></div>
+                    <div class="discount-percent">Скидка: 20%</div>
+                    <button class="add-to-cart">Добавить в корзину</button>
+                </div>
+
+
+    </div>
+</div>
+
+<footer>Все права защищены © 2024</footer>
+
+</body>
+</html>
